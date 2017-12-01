@@ -17,7 +17,7 @@ input   [31:0]      addr_i ;
 output reg [31:0]   data_o ;
 
 // Data Memory
-reg     [31:0]     memory  [0:7];
+reg     [7:0]     memory  [0:31];
 
 // Write Data   
 always@(posedge clk_i) begin
