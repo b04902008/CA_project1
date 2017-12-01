@@ -14,10 +14,15 @@ wire    [31:0]  inst_addr, inst;
 
 Control Control(
     .Op_i       (inst[31:26]),
-    .RegDst_o   (),//MUX_RegDst.select_i
-    .ALUOp_o    (),//ALU_Control.ALUOp_i
-    .ALUSrc_o   (),//MUX_ALUSrc.select_i
-    .RegWrite_o ()//Registers.RegWrite_i
+    .RegDst_o   (),//MUX_RegDst.select_i,
+    .ALUSrc_o   (),//MUX_ALUSrc.select_i,
+    .MemtoReg_o (),
+    .RegWrite_o (),//Registers.RegWrite_i,
+    .MemWrite_o (),
+    .Branch_o   (),
+    .Jump_o     (),
+    .ALUOp_o    (),//ALU_Control.ALUOp_i,
+    .MemRead_o  ()
 );
 
 Adder Add_PC(
