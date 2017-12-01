@@ -15,7 +15,7 @@ CPU CPU(
 );
   
 initial begin
-    $dumpfile('text.vcd');
+    $dumpfile("text.vcd");
     $dumpvars;
     counter = 0;
     stall = 0;
