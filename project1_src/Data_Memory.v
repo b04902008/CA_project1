@@ -9,26 +9,26 @@ module Data_Memory
 );
 
 // Ports
-input               clk_i;
-input   [4:0]       RSaddr_i;
-input   [4:0]       RTaddr_i;
-input   [4:0]       RDaddr_i;
-input   [31:0]      RDdata_i;
-input               RegWrite_i;
-output  [31:0]      RSdata_o; 
-output  [31:0]      RTdata_o;
+input               clk_i ;
+input               MemWrite_i ;
+input               MemRead_i ;
+input   [31:0]      data_i ;
+input   [31:0]      addr_i ;
+output reg [31:0]   data_o ;
 
-// Register File
-reg     [31:0]      register        [0:31];
-
-// Read Data      
-assign  RSdata_o = register[RSaddr_i];
-assign  RTdata_o = register[RTaddr_i];
+// Data Memory
+reg     [31:0]     memory  [0:7];
 
 // Write Data   
 always@(posedge clk_i) begin
-    if(RegWrite_i)
-        register[RDaddr_i] <= RDdata_i;
+    if (MemWrite_i)
+        memory[addr_i] <= data_i;
 end
    
+// Read Data  
+always begin
+    if (MemRead_i)
+        data_o <= memory[addr_i] ;
+end
+
 endmodule 
