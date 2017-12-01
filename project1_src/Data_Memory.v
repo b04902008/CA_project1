@@ -22,10 +22,12 @@ reg     [7:0]     memory  [0:31];
 // Write Data   
 always@(posedge clk_i) begin
     if (MemWrite_i)
+    begin
         memory[addr_i] <= data_i[7:0];
         memory[addr_i+1] <= data_i[15:8];
         memory[addr_i+2] <= data_i[23:16];
         memory[addr_i+3] <= data_i[31:24];
+    end
 end
    
 // Read Data  
