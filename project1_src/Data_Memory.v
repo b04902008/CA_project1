@@ -26,7 +26,7 @@ always@(posedge clk_i) begin
 end
    
 // Read Data  
-always begin
+always@(*) begin
     if (MemRead_i)
         data_o <= memory[addr_i] ;
 end

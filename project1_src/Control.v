@@ -13,7 +13,7 @@ module Control
 );
 
 input	[5:0]	Op_i;
-output			RegDst_o, ALUSrc_o, MemtoReg_o, RegWrite_o, MemWrite_o, Branch_o, Jump_o, ;
+output			RegDst_o, ALUSrc_o, MemtoReg_o, RegWrite_o, MemWrite_o, Branch_o, Jump_o, MemRead_o;
 output	[1:0]	ALUOp_o;
 
 wire [9:0] temp;
