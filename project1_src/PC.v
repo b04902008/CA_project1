@@ -4,6 +4,7 @@ module PC
     rst_i,
     start_i,
     pc_i,
+    stall_i,   //
     pc_o
 );
 
@@ -23,7 +24,7 @@ always@(posedge clk_i or negedge rst_i) begin
         pc_o <= 32'b0;
     end
     else begin
-        if(start_i)
+        if(start_i & ~stall_i)
             pc_o <= pc_i;
         else
             pc_o <= pc_o;
