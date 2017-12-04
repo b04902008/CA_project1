@@ -11,6 +11,8 @@ module IF_ID
 
 // Ports
 input				clk_i;
+input 				IFIDwrite_i;
+input 				flush_i;
 input	[31:0]		pc_i;
 input	[31:0]		inst_i;
 output	[31:0]		pc_o;

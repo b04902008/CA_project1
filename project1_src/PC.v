@@ -13,6 +13,7 @@ input               clk_i;
 input               rst_i;
 input               start_i;
 input   [31:0]      pc_i;
+input               stall_i;
 output  [31:0]      pc_o;
 
 // Wires & Registers

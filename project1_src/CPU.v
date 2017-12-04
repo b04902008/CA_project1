@@ -13,8 +13,8 @@ input			start_i;
 wire	[31:0]	inst_addr, inst;
 wire			zero, flush;
 
-assign zero = (Registers.RSdata_o == Registers.RTdata_o)
-assign flush = Control.Jump_o | (Control.Branch_o & zero)
+assign zero = (Registers.RSdata_o == Registers.RTdata_o) ;
+assign flush = Control.Jump_o | (Control.Branch_o & zero) ;
 
 Control Control(
 	.Op_i		(IF_ID.inst_o[31:26]),
