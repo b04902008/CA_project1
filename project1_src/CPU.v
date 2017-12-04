@@ -25,6 +25,64 @@ Control Control(
     .MemRead_o  ()
 );
 
+IF_ID IF_ID(
+    clk_i       (clk_i),
+    IFIDwrite_i (),
+    flush_i     (),
+    pc_i        (Add_PC.data_o),
+    inst_i      (inst),
+    pc_o        (),
+    inst_o      ()
+);
+
+ID_EX ID_EX(
+    clk_i       (clk_i),
+    WB_i        (),//control signal
+    M_i         (),//control signal
+    EX_i        (),//control signal
+    RSdata_i    (Registers.RSdata_o),
+    RTdata_i    (Registers.RTdata_o),
+    SignExtend_i(Sign_Extend.data_o),
+    RSaddr_i    (inst[25:21]),
+    RTaddr_i    (inst[20:16]),
+    RDaddr_i    (inst[15:11]),
+    WB_o        (),//control signal
+    M_o         (),//control signal
+    EX_o        (),//control signal
+    RSdata_o    (),
+    RTdata_o    (),
+    SignExtend_o(),
+    RSaddr_o    (),
+    RTaddr_o    (),
+    RDaddr_o    ()
+);
+
+EX_MEM EX_MEM(
+    clk_i       (clk_i),
+    WB_i        (ID_EX.WB_o),//control signal
+    M_i         (ID_EX.M_o),//control signal
+    DMaddr_i    (ALU.data_o),
+    DMdata_i    (),
+    RDaddr_i    (),
+    WB_o        (),//control signal
+    M_o         (),//control signal
+    DMaddr_o    (),
+    DMdata_o    (),
+    RDaddr_o    ()
+);
+
+MEM_WB MEM_WB(
+    clk_i       (clk_i),
+    WB_i        (EX_MEM.WB_o),//control signal
+    data1_i     (Data_Memory.data_o),
+    data2_i     (EX_MEM.DMaddr_o),
+    RDaddr_i    (EX_MEM.RDaddr_o),
+    WB_o        (),//control signal
+    data1_o     (),
+    data2_o     (),
+    RDaddr_o    ()
+);
+
 Adder Add_PC(
     .data1_in   (PC.pc_o),//inst_addr
     .data2_in   (32'd4),
