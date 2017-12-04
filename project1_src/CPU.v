@@ -11,6 +11,10 @@ input               rst_i;
 input               start_i;
 
 wire    [31:0]  inst_addr, inst;
+wire            zero, flush;
+
+assign zero = (Registers.RSdata_o == Registers.RTdata_o)
+assign flush = Control.Jump_o | (Control.Branch_o & zero)
 
 Control Control(
     .Op_i       (inst[31:26]),
@@ -69,6 +73,7 @@ Registers Registers(
     .RSdata_o   (),//ALU.data1_i
     .RTdata_o   ()//MUX_ALUSrc.data1_i
 );
+
 
 MUX5 MUX_RegDst(
     .data1_i    (inst[20:16]),
