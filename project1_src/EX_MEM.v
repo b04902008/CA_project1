@@ -32,6 +32,14 @@ reg		[1:0]		M_o;//control signal
 reg		[31:0]		DMaddr_o;
 reg		[31:0]		DMdata_o;
 reg		[4:0]		RDaddr_o;
+
+initial begin
+	WB_o = 2'd0
+	M_o = 2'd0
+	DMaddr_o = 32'd0
+	DMdata_o = 32'd0
+	RDaddr_o = 5'd0
+end
  
 always@(posedge clk_i) begin
 	WB_o <= WB_i;//control signal

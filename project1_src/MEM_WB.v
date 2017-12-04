@@ -27,7 +27,14 @@ reg		[1:0]		WB_o;//control signal
 reg		[31:0]		data1_o;
 reg		[31:0]		data2_o;
 reg		[4:0]		RDaddr_o;
-  
+
+initial begin
+	WB_o = 2'd0
+	data1_o = 32'd0
+	data2_o = 32'd0
+	RDaddr_o = 5'd0
+end
+
 always@(posedge clk_i) begin
 	WB_o <= WB_i;//control signal
 	data1_o <= data1_i;
