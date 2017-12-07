@@ -54,15 +54,15 @@ reg		[4:0]		RTaddr_o;
 reg		[4:0]		RDaddr_o;
 
 initial begin
-	WB_o = 2'd0;
-	M_o = 2'd0;
-	EX_o = 4'd0;
-	RSdata_o = 32'd0;
-	RTdata_o = 32'd0;
-	SignExtend_o = 32'd0;
-	RSaddr_o = 5'd0;
-	RTdata_o = 5'd0;
-	RDaddr_o = 5'd0;
+	WB_o = 2'b0;
+	M_o = 2'b0;
+	EX_o = 4'b0;
+	RSdata_o = 32'b0;
+	RTdata_o = 32'b0;
+	SignExtend_o = 32'b0;
+	RSaddr_o = 5'b0;
+	RTdata_o = 5'b0;
+	RDaddr_o = 5'b0;
 end
 
 always@(posedge clk_i) begin
