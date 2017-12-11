@@ -17,7 +17,7 @@ CPU CPU(
 );
   
 initial begin
-    $dumpfile("text.vcd");
+    $dumpfile("wave.vcd");
     $dumpvars;
     counter = 0;
     stall = 0;
@@ -41,7 +41,7 @@ initial begin
     CPU.PC.pc_o = 32'b0;
 
     // Load instructions into instruction memory
-    $readmemb("Fibonacci_instruction.txt", CPU.Instruction_Memory.memory);
+    $readmemb("instruction.txt", CPU.Instruction_Memory.memory);
     
     // Open output file
     outfile = $fopen("output.txt") | 1;
@@ -61,7 +61,7 @@ initial begin
 end
   
 always@(posedge Clk) begin
-    if(counter == 70)    // stop after 30 cycles
+    if(counter == 30)    // stop after 30 cycles
         $stop;
 
     // put in your own signal to count stall and flush
